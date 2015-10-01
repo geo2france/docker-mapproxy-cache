@@ -1,0 +1,23 @@
+services:
+  demo:
+  wms:
+    srs: ['EPSG:4326', 'EPSG:3857', 'EPSG:2154']
+    md:
+      title: Geopicardie Cache
+      abstract: Proxy WMS
+
+layers:
+        []
+caches:
+        {}
+
+sources:
+        {}
+grids:
+    webmercator:
+        base: GLOBAL_WEBMERCATOR
+    mercatornw:
+        base: GLOBAL_WEBMERCATOR
+        origin: nw
+
+globals:
