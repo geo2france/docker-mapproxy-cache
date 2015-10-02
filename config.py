@@ -40,5 +40,5 @@ class Configuration:
         return yaml.dump(self.yaml)
 
 conf = Configuration('mapproxy.yaml')
-conf.addWMS('http://localhost:8080/service')
+conf.addWMS('http://styles-wms/service')
 print conf.dumpYaml()

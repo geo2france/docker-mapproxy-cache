@@ -1,0 +1,34 @@
+#!/bin/bash
+echo "Styles GéoPicardie CACHE"
+
+echo "Configuration de mapproxy"
+if [ ! -d /srv/mapproxy/www ]; then
+	mkdir -p /srv/mapproxy/www
+fi
+
+cd /root
+if ! python config.py > /srv/mapproxy/mapproxy.yaml; then
+	echo "Erreur de configuration" > /dev/stderr
+	env
+	cat /etc/hosts
+	exit 1
+fi
+
+mapproxy-util create -t wsgi-app -f /srv/mapproxy/mapproxy.yaml /srv/mapproxy/www/config.py
+
+chmod a+x /srv/mapproxy/www/config.py
+
+echo "Configuration apache"
+cat >  /etc/apache2/conf-enabled/mapproxy.conf << EOF
+WSGIScriptAlias /mapproxy /srv/mapproxy/www/config.py
+WSGIDaemonProcess mapproxy user=mapproxy group=mapproxy processes=2 threads=4
+WSGIProcessGroup mapproxy
+
+<Directory /srv/mapproxy/www>
+  Require all granted
+</Directory>
+EOF
+
+echo "Démarre apache" 1>&2
+
+/usr/sbin/apache2ctl -D FOREGROUND
