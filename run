@@ -4,13 +4,19 @@ echo "Styles GéoPicardie CACHE"
 echo "Configuration de mapproxy"
 if [ ! -d /srv/mapproxy/www ]; then
 	mkdir -p /srv/mapproxy/www
+	mkdir -p /srv/mapproxy/cache_data
 fi
 
+chown mapproxy /srv/mapproxy/cache_data
+
 cd /root
-if ! python config.py > /srv/mapproxy/mapproxy.yaml; then
-	echo "Erreur de configuration" > /dev/stderr
+python config.py > /srv/mapproxy/mapproxy.yaml
+status=$?
+if [ $status != 0 ]; then
+	echo "Erreur de configuration ($status)" > /dev/stderr
 	env
 	cat /etc/hosts
+	ping -c 1 styles-wms
 	exit 1
 fi
 

@@ -1,12 +1,18 @@
 import requests
 import xml.etree.ElementTree as ET
 import yaml
+import sys
 
 class Capabilities:
     def __init__(self, url):
         self.layers = []
         r = requests.get(url+'?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetCapabilities')
-        root = ET.fromstring(r.text)
+        try:
+            root = ET.fromstring(r.text.encode('utf8'))
+        except:
+            sys.stderr.write("Ne peut lire\n")
+            sys.stderr.write(r.text.encode('utf8')+"\n")
+            sys.exit(2)
         layers = root.findall('.//Layer')
         for layer in layers:
             name = layer.find('Name')
@@ -40,5 +46,5 @@ class Configuration:
         return yaml.dump(self.yaml)
 
 conf = Configuration('mapproxy.yaml')
-conf.addWMS('http://styles-wms/service')
+conf.addWMS('http://styles-wms/mapproxy/service')
 print conf.dumpYaml()
