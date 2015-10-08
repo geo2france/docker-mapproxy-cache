@@ -1,7 +1,7 @@
 services:
   demo:
   wms:
-    srs: ['EPSG:4326', 'EPSG:3857', 'EPSG:2154']
+    srs: ['EPSG:4326', 'EPSG:3857', 'EPSG:2154', 'EPSG:900913']
     md:
       title: Geopicardie Cache
       abstract: Proxy WMS
