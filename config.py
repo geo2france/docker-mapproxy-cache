@@ -32,10 +32,18 @@ class Configuration:
                     'req': {
                         'url': url,
                         'layers': layer
+                    },
+                    'http': {
+                        'timeout': "60",
+                        'method': "GET"
                     }
             }
             self.yaml['caches']['cache_'+layer] = {
-                    'sources': ['src_'+layer,]
+                    'sources': ['src_'+layer,],
+                    'cache': {
+                        'type': 'mongodb',
+                        'url': 'mongodb://mongodb'
+                    }
             }
             self.yaml['layers'].append({
                     'name': layer,
@@ -52,6 +60,6 @@ while True:
         conf.addWMS('http://styles-wms/mapproxy/service')
         break
     except requests.exceptions.ConnectionError:
-        print "WMS service not ready"
+        sys.stderr.write("WMS service not ready\n")
         time.sleep(1)
 print conf.dumpYaml()
