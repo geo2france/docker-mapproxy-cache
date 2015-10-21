@@ -2,6 +2,7 @@ import requests
 import xml.etree.ElementTree as ET
 import yaml
 import sys
+import time
 
 class Capabilities:
     def __init__(self, url):
@@ -46,5 +47,11 @@ class Configuration:
         return yaml.dump(self.yaml)
 
 conf = Configuration('mapproxy.yaml')
-conf.addWMS('http://styles-wms/mapproxy/service')
+while True:
+    try:
+        conf.addWMS('http://styles-wms/mapproxy/service')
+        break
+    except requests.exceptions.ConnectionError:
+        print "WMS service not ready"
+        time.sleep(1)
 print conf.dumpYaml()
