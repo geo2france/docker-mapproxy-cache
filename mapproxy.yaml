@@ -5,6 +5,9 @@ services:
     md:
       title: Geopicardie Cache
       abstract: Proxy WMS
+  tms:
+    use_grid_names: true
+  wmts:
 
 layers:
         []
