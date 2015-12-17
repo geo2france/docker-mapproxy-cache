@@ -3,6 +3,7 @@ import xml.etree.ElementTree as ET
 import yaml
 import sys
 import time
+import os
 
 class Capabilities:
     def __init__(self, url):
@@ -34,15 +35,16 @@ class Configuration:
                         'layers': layer
                     },
                     'http': {
-                        'timeout': "60",
+                        'client_timeout': 120,
                         'method': "GET"
                     }
             }
             self.yaml['caches']['cache_'+layer] = {
                     'sources': ['src_'+layer,],
+		    'grids': ['cnigl93','webmercator'],
                     'cache': {
                         'type': 'mongodb',
-                        'url': 'mongodb://mongodb'
+                        'url': os.getenv('MONGODB_URL')
                     }
             }
             self.yaml['layers'].append({
