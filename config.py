@@ -45,6 +45,10 @@ class Configuration:
                     'cache': {
                         'type': 'mongodb',
                         'url': os.getenv('MONGODB_URL')
+                    },
+                    'image': {
+                        'format': 'image/png',
+                        'mode': 'RGBA'
                     }
             }
             self.yaml['layers'].append({

@@ -3,33 +3,33 @@ seeds:
         levels:
             from: 0
             to: 4
-        srs: ['EPSG:900913']
+        srs: ['EPSG:3857','EPSG:2154']
         caches: ['cache_bright','cache_faded','cache_grey','cache_naturaliste']
         refresh_before:
-            time: '2015-10-26T00:00:00'
+            time: '2015-12-17T00:00:00'
     france:
         levels:
             from: 5
             to: 12
-        srs: ['EPSG:900913']
+        srs: ['EPSG:3857','EPSG:2154']
         caches: ['cache_bright','cache_faded','cache_grey','cache_naturaliste']
         coverages: ['france']
         refresh_before:
-            time: '2015-10-26T00:00:00'
+            time: '2015-12-17T00:00:00'
     nord:
         levels:
             from: 13
             to: 15
-        srs: ['EPSG:900913']
+        srs: ['EPSG:3857','EPSG:2154']
         caches: ['cache_bright','cache_faded','cache_grey','cache_naturaliste']
         coverages: ['nord']
         refresh_before:
-            time: '2015-10-26T00:00:00'
+            time: '2015-12-17T00:00:00'
 
 coverages:
     france:
         bbox: [-827715,5019072,1355556,6644490]
-        bbox_srs: 'EPSG:900913'
+        bbox_srs: 'EPSG:3857'
     nord:
         bbox: [-147923,5924725,863573,6677772]
-        bbox_srs: 'EPSG:900913'
+        bbox_srs: 'EPSG:3857'
