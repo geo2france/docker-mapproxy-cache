@@ -32,4 +32,5 @@ globals:
     image:
         paletted: false
     cache:
-        meta_buffer: 0
+        meta_buffer: 128
+        meta_size: [3,3]
