@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <link rel="stylesheet" href="https://ssl.picardie-nature.org/statique/OpenLayers-3.11.2/ol.css" type="text/css">
+    <style>
+      .map {
+        height: 90%;;
+        width: 100%;
+      }
+      body {
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+      } 
+      .top {
+	      background-color: rgb(100,100,222);
+	      text-align: center;
+      }
+      html { height: 100%; }
+    </style>
+    <script src="https://ssl.picardie-nature.org/statique/OpenLayers-3.11.2/ol.js" type="text/javascript"></script>
+    <script src="https://ssl.picardie-nature.org/statique/jquery/jquery-1.11.2.min.js"></script>
+    <title>Aperçu OSM Geopicardie</title>
+  </head>
+  <body>
+    <script>
+    function onLayerChange() {
+	var l = document.getElementById('layers');
+	var n = parseInt(l.value);
+	var layers = map.getLayers().getArray();
+	for (var i=0; i<layers.length; i++) {
+		layers[i].setVisible(i==n);
+	}
+    }
+    </script>
+    <div id="top" class="top">
+	<img src="http://www.geopicardie.fr/portail/sites/default/files/logo-geopicardie_0.gif" style="float:left;">
+	<select id="layers" onchange="javascript:onLayerChange();">
+	</select>
+	<a style="float:right;" href="https://www.statuscake.com" title="Website Uptime Monitoring">
+		<img src="https://www.statuscake.com/App/button/index.php?Track=bCqH2qtJMv&Days=30&Design=5" />
+	</a>
+	<div style="clear:both;"></div>
+    </div>
+    <div id="map" class="map"></div>
+    <script type="text/javascript">
+	var resolutions = [
+		78271.516964,
+		39135.758482,
+		19567.879241,
+		9783.9396205,
+		4891.96981025,
+		2445.98490513,
+		1222.99245256,
+		611.496226281,
+		305.748113141,
+		152.87405657,
+		76.4370282852,
+		38.2185141426,
+		19.1092570713,
+		9.55462853565,
+		4.77731426782,
+		2.38865713391,
+		1.19432856696,
+		0.597164283478,
+		0.298582141739
+	];
+	var layers = [];
+	var list_layers = ['bright','faded','grey','naturaliste'];
+	for (var i=0;i<list_layers.length;i++) {
+		$('#layers').append("<option value=\""+i+"\">"+list_layers[i]+"</option>");
+		layers.push(
+			new ol.layer.Tile({
+				visible: false,
+				source: new ol.source.XYZ({
+					tileGrid: new ol.tilegrid.TileGrid({
+						resolutions: resolutions,
+						extent: ol.proj.get('EPSG:3857').getExtent()
+					}),
+					url: "http://osm.geopicardie.fr/mapproxy/tms/1.0.0/"+list_layers[i]+"/webmercator/{z}/{x}/{-y}.png",
+				})
+			})
+		);		
+	}
+	var map = new ol.Map({
+		target: 'map',
+		layers: layers,
+		view: new ol.View({
+			center: ol.proj.fromLonLat([1, 49]),
+			zoom: 4
+		})
+	});
+	$(document).ready(onLayerChange);
+    </script>
+  </body>
+</html>
+
