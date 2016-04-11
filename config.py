@@ -35,7 +35,7 @@ class Configuration:
                         'layers': layer
                     },
                     'http': {
-                        'client_timeout': 120,
+                        'client_timeout': 240,
                         'method': "GET"
                     }
             }
