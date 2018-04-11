@@ -6,8 +6,8 @@ seeds:
         grids: ['webmercator']
         caches: ['cache_pure','cache_overlay','cache_bright','cache_faded','cache_grey','cache_naturaliste']
         refresh_before:
-            time: '2016-05-01T23:25:00'
-    france:
+            time: '2018-03-01T23:25:00'
+    france: 
         levels:
             from: 7
             to: 12
@@ -15,7 +15,7 @@ seeds:
         caches: ['cache_pure','cache_overlay','cache_bright','cache_faded','cache_grey','cache_naturaliste']
         coverages: ['france']
         refresh_before:
-            time: '2016-05-01T23:25:00'
+            time: '2018-03-01T23:25:00'
     nord:
         levels:
             from: 13
@@ -24,12 +24,12 @@ seeds:
         caches: ['cache_pure','cache_overlay','cache_bright','cache_faded','cache_grey','cache_naturaliste']
         coverages: ['nord']
         refresh_before:
-            time: '2016-05-01T23:25:00'
+            time: '2018-03-01T23:25:00'
 
 coverages:
     france:
         bbox: [-827715,5019072,1355556,6644490]
         bbox_srs: 'EPSG:3857'
     nord:
-        bbox: [-147923,5924725,863573,6677772]
+        bbox: [104000,6185000,569000,6678000]
         bbox_srs: 'EPSG:3857'
