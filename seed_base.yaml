@@ -6,8 +6,8 @@ seeds:
         grids: ['webmercator']
         caches: ['cache_pure','cache_overlay','cache_bright','cache_faded','cache_grey','cache_naturaliste']
         refresh_before:
-            time: '2018-03-01T23:25:00'
-    france: 
+            weeks: 24
+    france:
         levels:
             from: 7
             to: 12
@@ -15,7 +15,7 @@ seeds:
         caches: ['cache_pure','cache_overlay','cache_bright','cache_faded','cache_grey','cache_naturaliste']
         coverages: ['france']
         refresh_before:
-            time: '2018-03-01T23:25:00'
+            weeks: 12
     nord:
         levels:
             from: 13
@@ -24,7 +24,7 @@ seeds:
         caches: ['cache_pure','cache_overlay','cache_bright','cache_faded','cache_grey','cache_naturaliste']
         coverages: ['nord']
         refresh_before:
-            time: '2018-03-01T23:25:00'
+            weeks: 4
 
 coverages:
     france:
