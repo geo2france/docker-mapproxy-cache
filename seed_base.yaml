@@ -1,35 +1,97 @@
-seeds:
+cleanups:
     monde:
-        levels:
-            from: 0
-            to: 6
         grids: ['webmercator']
         caches: ['cache_pure','cache_overlay','cache_bright','cache_faded','cache_grey','cache_naturaliste']
-        refresh_before:
-            weeks: 24
-    france:
         levels:
-            from: 7
-            to: 12
+            to: 6
+        remove_before:
+            days: 90
+
+    france:
         grids: ['webmercator']
         caches: ['cache_pure','cache_overlay','cache_bright','cache_faded','cache_grey','cache_naturaliste']
         coverages: ['france']
-        refresh_before:
-            weeks: 12
-    nord:
         levels:
-            from: 13
-            to: 16
+            from: 7
+            to: 9
+        remove_before:
+            days: 30
+
+    nord:
         grids: ['webmercator']
         caches: ['cache_pure','cache_overlay','cache_bright','cache_faded','cache_grey','cache_naturaliste']
         coverages: ['nord']
+        levels:
+            from: 10
+            to: 15
+        remove_before:
+            days: 14
+
+    agglos:
+        grids: ['webmercator']
+        caches: ['cache_pure','cache_overlay','cache_bright','cache_faded','cache_grey','cache_naturaliste']
+        coverages: ['compiegne', 'beauvais', 'amiens']
+        levels:
+            from: 16
+        remove_before:
+            days: 7
+
+seeds:
+    monde:
+        grids: ['webmercator']
+        caches: ['cache_pure','cache_overlay','cache_bright','cache_faded','cache_grey','cache_naturaliste']
+        levels:
+            to: 6
         refresh_before:
-            weeks: 4
+            days: 30
+
+    france:
+        grids: ['webmercator']
+        caches: ['cache_pure','cache_overlay','cache_bright','cache_faded','cache_grey','cache_naturaliste']
+        coverages: ['france']
+        levels:
+            from: 7
+            to: 9
+        refresh_before:
+            days: 30
+
+    nord:
+        grids: ['webmercator']
+        caches: ['cache_pure','cache_overlay','cache_bright','cache_faded','cache_grey','cache_naturaliste']
+        coverages: ['nord']
+        levels:
+            from: 10
+            to: 15
+        refresh_before:
+            days: 14
+
+    agglos:
+        grids: ['webmercator']
+        caches: ['cache_pure','cache_overlay','cache_bright','cache_faded','cache_grey','cache_naturaliste']
+        coverages: ['compiegne', 'beauvais', 'amiens']
+        levels:
+            from: 16
+            to: 18
+        remove_before:
+            days: 7
 
 coverages:
     france:
         bbox: [-827715,5019072,1355556,6644490]
         bbox_srs: 'EPSG:3857'
+
     nord:
         bbox: [104000,6185000,569000,6678000]
+        bbox_srs: 'EPSG:3857'
+
+    compiegne:
+        bbox: [300000,6333000,327000,6357000]
+        bbox_srs: 'EPSG:3857'
+
+    beauvais:
+        bbox: [220000,6337000,245000,6358000]
+        bbox_srs: 'EPSG:3857'
+
+    amiens:
+        bbox: [242000,6417000,271000,6439000]
         bbox_srs: 'EPSG:3857'
