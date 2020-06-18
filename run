@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "Styles GéoPicardie CACHE"
+echo "Styles Géo2France CACHE"
 
 echo "Configuration de mapproxy"
 if [ ! -d /srv/mapproxy/www ]; then
@@ -20,7 +20,7 @@ if [ $status != 0 ]; then
 	exit 1
 fi
 
-mapproxy-util create -t wsgi-app -f /srv/mapproxy/mapproxy.yaml /srv/mapproxy/www/config.py
+mapproxy-util create --force -t wsgi-app -f /srv/mapproxy/mapproxy.yaml /srv/mapproxy/www/config.py
 
 chmod a+x /srv/mapproxy/www/config.py
 
