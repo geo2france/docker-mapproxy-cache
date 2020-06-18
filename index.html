@@ -2,7 +2,7 @@
 <html>
 <head>
 	
-    <title>Aperçu OSM GéoPicardie</title>
+    <title>Aperçu OSM Géo2France</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
@@ -38,19 +38,14 @@
 <body>
 
 <div id="overlay_div">
-	<img id="logo" src="https://www.geopicardie.fr/portail/system/files/site-content/documents/fichiers/logo_geopicardie_rectangle.png">
-    <div id="statuscake">
-		<a href="https://www.statuscake.com" title="Website Uptime Monitoring">
-			<img src="https://www.statuscake.com/App/button/index.php?Track=bCqH2qtJMv&Days=30&Design=5" />
-		</a>
-    </div>
+	<img id="logo" src="https://www.geo2france.fr/portail/themes/custom/geo2france/logo.svg">
 </div>
 
 <div id='map'></div>
 
 <script>
-	var mbAttr = 'GéoPicardie & contributeurs d&apos;<a href="http://openstreetmap.org">OpenStreetMap</a>',
-		mbUrl = 'http://osm.geopicardie.fr/mapproxy/tms/1.0.0/{id}/webmercator/{z}/{x}/{y}.png';
+	var mbAttr = 'Géo2France & contributeurs d&apos;<a href="http://openstreetmap.org">OpenStreetMap</a>',
+		mbUrl = 'http://osm.geo2france.fr/mapproxy/tms/1.0.0/{id}/webmercator/{z}/{x}/{y}.png';
 
 	var layer_grey   = L.tileLayer(mbUrl, {id: 'grey', tms:true, zoomOffset:-1, attribution: mbAttr, maxZoom: 19}),
 		layer_bright  = L.tileLayer(mbUrl, {id: 'bright', tms:true, zoomOffset:-1, attribution: mbAttr, maxZoom: 19}),

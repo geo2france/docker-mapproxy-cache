@@ -3,7 +3,7 @@ services:
   wms:
     srs: ['EPSG:4326', 'EPSG:3857', 'EPSG:2154', 'EPSG:900913']
     md:
-      title: Geopicardie Cache
+      title: Geo2France Cache
       abstract: Proxy WMS
   tms:
     use_grid_names: true
