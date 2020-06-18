@@ -1,9 +1,21 @@
+# -*- coding: utf-8 -*-
+
 import requests
 import xml.etree.ElementTree as ET
 import yaml
 import sys
 import time
 import os
+
+
+LAYER_STYLES = {
+    "bright": u"OSM - Géo2France - Couleurs vives",
+    "faded": u"OSM - Géo2France - Couleurs en demi-teintes",
+    "grey": u"OSM - Géo2France - Niveaux de gris",
+    "naturaliste": u"OSM - Géo2France - Avec surcharge naturaliste",
+    "overlay": u"OSM - Géo2France - Surcharge pour photographies aériennes",
+    "pure": u"OSM - Géo2France - Sans toponymes",
+}
 
 
 class Capabilities:
@@ -63,7 +75,7 @@ class Configuration:
             yml_layers.append({
                 'name': layer,
                 'sources': ['cache_' + layer],
-                'title': "Style " + layer
+                'title': LAYER_STYLES.get(layer, "Style " + layer)
             })
 
         self.yaml['sources'] = yml_sources
