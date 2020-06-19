@@ -13,7 +13,7 @@ LAYER_STYLES = {
     "faded": u"OSM - Géo2France - Couleurs en demi-teintes",
     "grey": u"OSM - Géo2France - Niveaux de gris",
     "naturaliste": u"OSM - Géo2France - Avec surcharge naturaliste",
-    "overlay": u"OSM - Géo2France - Surcharge pour photographies aériennes",
+    "overlay": u"OSM - Géo2France - Toponymes",
     "pure": u"OSM - Géo2France - Sans toponymes",
 }
 
